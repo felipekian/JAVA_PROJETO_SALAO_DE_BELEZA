@@ -1,0 +1,31 @@
+#Deletar da tabela o cliente ou Funcionario
+->DELETE FROM cliente WHERE cpf = ?;
+->DELETE FROM funcionario WHERE cpf = ?;
+
+#Inserir Cliente e Funcionario no Banco de Dados
+->INSERT INTO cliente (cpf , nome , telefone) VALUES (?,?,?);
+->INSERT INTO funcionario (cpf , nome , telefone , endereco , especialidade) VALUES (?,?,?,?,?);
+
+
+#Alterar os dados do cliente ou funcionario
+->UPDATE cliente SET nome = ?, cpf = ? , telefone = ?;
+->UPDATE funcionario SET cpf = ?, nome = ? , telefone = ? , endereco=? , especialidade=?;
+
+#Pesquisa Cliente e Funcionario no Banco de Dados
+->SELECT * FROM cliente WHERE cpf=?;
+->SELECT * FROM funcionario WHERE cpf=?
+
+#Pesquisa disponibilidade do funcionario no dia citado
+->SELECT servico.horario as hora from servico, funcionario where servico.id_func=funcionario.cpf and servico.calendario=? and funcionario.cpf=? ORDER BY horario ASC;
+
+# Pesquisa Reserva feita pelo Cliente
+->SELECT servico.horario as hora, funcionario.especialidade as especFunc , funcionario.nome as nomeFunc FROM cliente , servico , funcionario WHERE servico.id_cliente=cliente.cpf and servico.id_func=funcionario.cpf and servico.calendario=? and cliente.cpf=?;
+
+#Pesquisa quais clientes o funcionario tem para atender em um dia citado e retorna o quais clientes sao e o que farao
+->SELECT cliente.nome as nomeCliente , funcionario.especialidade as especFunc FROM cliente , funcionario , servico WHERE servico.id_func=funcionario.cpf and servico.id_cliente=cliente.cpf and servico.calendario=? and funcionario.cpf=?;
+
+#Novo Login
+->INSERT INTO login (login , senha) VALUES (?,?);
+
+#Pesquisar Login
+->SELECT * FROM login where login=? and senha=?;
