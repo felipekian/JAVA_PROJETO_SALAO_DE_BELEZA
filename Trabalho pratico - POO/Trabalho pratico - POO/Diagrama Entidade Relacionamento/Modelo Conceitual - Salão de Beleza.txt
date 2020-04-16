@@ -1,0 +1,9 @@
+Modelo Conceitual - Salão de Beleza
+
+funcionario : Nome completo , Especialidade em que trabalha , CPF , Telefone para contato , endereco.
+
+Cliente :     Nome completo , Telefone  para contato, CPF.
+
+Serviços :    Id do serviço prestado , Id_cliente , Id_func , Data agendada , Horário marcado do atendimento , preco.    
+
+Login:	      Funcionario faz login no sistema
